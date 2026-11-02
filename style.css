@@ -2714,8 +2714,8 @@ ul {
    16. INNER PAGES (ABOUT US PAGE & GENERAL SECTION HEADERS)
    ========================================================================== */
 .page-hero {
-  background: linear-gradient(180deg, #FDF4F8 0%, #FFFFFF 100%);
-  padding: 30px 0 26px 0;
+  background: linear-gradient(180deg, #c469ab1a 0%, #9b186630 100%);
+  padding: 430px 0 40px 0;
   position: relative;
   border-bottom: 1px solid #F5DDEB;
   text-align: center;
