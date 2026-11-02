@@ -574,7 +574,7 @@ ul {
 }
 
 /* ==========================================================================
-   4. FLOATING CONSULTATION CARD
+   4. FLOATING CONSULTATION CARD (PREMIUM REDESIGN)
    ========================================================================== */
 .consultation-card-wrapper {
   position: relative;
@@ -584,48 +584,51 @@ ul {
 }
 
 .consultation-card {
-  background: #FFFFFF;
-  border: 1.5px solid #F3CCE0;
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFF8FC 100%);
+  border: 1.5px solid rgba(224, 137, 182, 0.45);
   border-radius: var(--radius-pill);
-  padding: 14px 28px 14px 18px;
-  box-shadow: 0 16px 45px rgba(158, 29, 103, 0.1);
+  padding: 14px 26px 14px 18px;
+  box-shadow: 0 16px 45px rgba(158, 29, 103, 0.09), 0 2px 10px rgba(0, 0, 0, 0.03);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  transition: var(--transition);
+  gap: 22px;
+  transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
   position: relative;
-  overflow: hidden;
-}
-
-.consultation-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 6px;
-  height: 100%;
-  background: var(--primary-gradient);
 }
 
 .consultation-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 22px 55px rgba(158, 29, 103, 0.16);
-  border-color: var(--primary-color);
+  box-shadow: 0 22px 55px rgba(158, 29, 103, 0.16), 0 4px 14px rgba(0, 0, 0, 0.04);
+  border-color: rgba(158, 29, 103, 0.6);
+}
+
+/* Left: Doctor Avatar with Gradient Halo */
+.consult-doctor-main {
+  gap: 16px;
+  flex-grow: 1;
 }
 
 .consult-doctor-avatar-wrap {
   position: relative;
   flex-shrink: 0;
+  padding: 3px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #9E1D67 0%, #F4CCE2 50%, #9E1D67 100%);
+  box-shadow: 0 6px 16px rgba(158, 29, 103, 0.22);
+  transition: transform 0.3s ease;
+}
+
+.consultation-card:hover .consult-doctor-avatar-wrap {
+  transform: scale(1.04);
 }
 
 .consult-doctor-thumb {
-  width: 74px;
-  height: 74px;
+  width: 68px;
+  height: 68px;
   border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #FDEAF4;
-  box-shadow: 0 6px 16px rgba(158, 29, 103, 0.15);
+  object-fit: contain;
+  background: #FFFFFF;
   display: block;
 }
 
@@ -639,31 +642,58 @@ ul {
   background-color: #10B981;
   border: 2.5px solid #FFFFFF;
   box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
-  animation: pulseGreen 2.5s infinite;
+  animation: pulseGreen 2s infinite;
 }
 
 @keyframes pulseGreen {
-  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
-  70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+  70% { box-shadow: 0 0 0 7px rgba(16, 185, 129, 0); }
   100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
 }
 
+/* Doctor Content / Titles */
 .consult-content {
   flex-grow: 1;
 }
 
+.consult-eyebrow {
+  margin-bottom: 2px;
+}
+
+.consult-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(158, 29, 103, 0.08);
+  color: var(--primary-color);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+}
+
+.pulse-sparkle {
+  color: var(--primary-color);
+  font-size: 0.65rem;
+}
+
 .consult-title {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 800;
   color: var(--text-dark);
-  margin-bottom: 2px;
+  margin-bottom: 3px;
   letter-spacing: -0.2px;
 }
 
 .consult-doctor-name {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 600;
   color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 .consult-doctor-name .doc-highlight {
@@ -671,28 +701,80 @@ ul {
   font-weight: 700;
 }
 
+.consult-doctor-name .doc-divider {
+  color: #D3D7DF;
+}
+
 .consult-doctor-name .doc-tag {
-  color: #8C93A0;
+  color: #6E7582;
   font-weight: 500;
   font-size: 0.88rem;
 }
 
-.consult-timing {
-  line-height: 1.25;
+.doc-exp-badge {
+  background: #FFF1F7;
+  color: var(--primary-color);
+  border: 1px solid #F4D3E5;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: var(--radius-pill);
 }
 
-.consult-timing .timing-title {
-  font-size: 0.75rem;
+/* Right Side: Timings & Actions */
+.consult-right-block {
+  gap: 18px;
+  flex-shrink: 0;
+}
+
+.consult-timing-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.timing-icon-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #FDF1F7;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  border: 1px solid #F6D6E8;
+  flex-shrink: 0;
+}
+
+.timing-label {
+  font-size: 0.7rem;
   font-weight: 700;
   color: var(--primary-color);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
+  display: block;
+  line-height: 1.2;
 }
 
-.consult-timing .timing-hours {
-  font-size: 0.85rem;
+.timing-hours {
+  font-size: 0.86rem;
   font-weight: 700;
   color: var(--text-dark);
+  display: block;
+  line-height: 1.2;
+}
+
+.consult-timing-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(158, 29, 103, 0.15);
+}
+
+/* Actions Group */
+.consult-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .consult-phone-pill {
@@ -703,22 +785,62 @@ ul {
   color: #FFFFFF !important;
   font-weight: 700;
   font-size: 0.95rem;
-  padding: 13px 30px;
+  padding: 10px 22px 10px 14px;
   border-radius: var(--radius-pill);
-  box-shadow: 0 6px 20px rgba(158, 29, 103, 0.28);
+  box-shadow: 0 6px 18px rgba(158, 29, 103, 0.28);
   flex-shrink: 0;
   transition: var(--transition);
+  text-decoration: none;
 }
 
 .consult-phone-pill:hover {
   background: linear-gradient(135deg, #8A0E69 0%, #7F1451 100%);
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 10px 28px rgba(158, 29, 103, 0.4);
-  color: #FFFFFF;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 24px rgba(158, 29, 103, 0.38);
+  color: #FFFFFF !important;
+}
+
+.phone-icon-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
 }
 
 .consult-phone-pill i {
   animation: ringShake 3s ease infinite;
+}
+
+.phone-main-number {
+  letter-spacing: 0.3px;
+}
+
+/* WhatsApp Quick Chat Icon Button */
+.consult-wa-quick-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #25D366;
+  color: #FFFFFF !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.32);
+  transition: var(--transition);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.consult-wa-quick-btn:hover {
+  background: #20BA5A;
+  transform: translateY(-2px) scale(1.08);
+  box-shadow: 0 8px 22px rgba(37, 211, 102, 0.45);
+  color: #FFFFFF !important;
 }
 
 @keyframes ringShake {
@@ -770,38 +892,40 @@ ul {
   align-items: center;
   justify-content: center;
   z-index: 2;
-  padding: 20px 0;
+  padding: 24px 18px;
+  max-width: 460px;
+  margin: 0 auto;
 }
 
-/* Layer 1: Backdrop Decorative Card */
+/* Layer 1: Backdrop Decorative Card (Dashed Border Pink Backdrop) */
 .about-backdrop-card {
   position: absolute;
-  width: 90%;
+  width: 95%;
   max-width: 440px;
-  height: 500px;
-  background: linear-gradient(135deg, #FDEAF4 0%, #F9D5E8 100%);
-  border-radius: 48px 120px 48px 120px;
-  transform: rotate(-3deg) translate(-10px, 10px);
+  height: 96%;
+  background: linear-gradient(135deg, #FDEEF6 0%, #FBE5F1 100%);
+  border-radius: 38px;
+  transform: rotate(-3.5deg) translate(-14px, 8px);
   z-index: 1;
   box-shadow: 0 15px 35px rgba(158, 29, 103, 0.08);
-  border: 2px dashed rgba(158, 29, 103, 0.25);
+  border: 2px dashed rgba(224, 137, 182, 0.7);
   transition: transform 0.6s ease;
 }
 
 .about-image-container:hover .about-backdrop-card {
-  transform: rotate(-1deg) translate(-5px, 5px);
+  transform: rotate(-1.5deg) translate(-8px, 4px);
 }
 
-/* Layer 2: Main Image Frame */
+/* Layer 2: Main Image Frame with Clean White Border */
 .about-img-frame {
   position: relative;
   width: 100%;
-  max-width: 440px;
-  height: 510px;
-  border-radius: 40px 110px 40px 110px;
+  max-width: 430px;
+  height: 500px;
+  border-radius: 36px;
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(158, 29, 103, 0.14);
-  border: 5px solid #FFFFFF;
+  box-shadow: 0 20px 50px rgba(158, 29, 103, 0.12);
+  border: 6px solid #FFFFFF;
   background-color: #FDF5F9;
   z-index: 2;
 }
@@ -817,39 +941,38 @@ ul {
   transform: scale(1.05);
 }
 
-/* Layer 3: Floating Badges */
+/* Layer 3: Floating Badges (Certified Dermatologist & 10,000+ Happy Patients) */
 .about-stat-badge {
   position: absolute;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(158, 29, 103, 0.18);
+  background: #FFFFFF;
+  border: 1px solid rgba(158, 29, 103, 0.14);
   border-radius: var(--radius-pill);
-  padding: 9px 18px;
+  padding: 10px 22px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   font-weight: 700;
-  color: var(--text-dark);
-  box-shadow: 0 10px 25px rgba(158, 29, 103, 0.12);
-  z-index: 4;
+  color: #1F242E;
+  box-shadow: 0 12px 30px rgba(158, 29, 103, 0.14);
+  z-index: 5;
   transition: var(--transition);
 }
 
 .about-stat-badge i {
   color: var(--primary-color);
-  font-size: 1rem;
+  font-size: 1.05rem;
 }
 
 .about-badge-top {
-  top: 10px;
-  right: 10px;
+  top: 6px;
+  right: 0px;
   animation: floatSlow 6s ease-in-out infinite;
 }
 
 .about-badge-bottom {
-  bottom: 25px;
-  left: 10px;
+  bottom: 8px;
+  left: 0px;
   animation: floatSlow 6s ease-in-out infinite 2s;
 }
 
@@ -857,8 +980,8 @@ ul {
   position: absolute;
   bottom: -15px;
   left: -15px;
-  width: 75px;
-  opacity: 0.7;
+  width: 70px;
+  opacity: 0.65;
   z-index: 3;
   animation: floatSlow 7s ease-in-out infinite;
 }
@@ -2588,7 +2711,199 @@ ul {
 }
 
 /* ==========================================================================
-   16. RESPONSIVE DESIGN (MEDIA QUERIES)
+   16. INNER PAGES (ABOUT US PAGE & GENERAL SECTION HEADERS)
+   ========================================================================== */
+.page-hero {
+  background: linear-gradient(180deg, #FDF4F8 0%, #FFFFFF 100%);
+  padding: 30px 0 26px 0;
+  position: relative;
+  border-bottom: 1px solid #F5DDEB;
+  text-align: center;
+}
+
+.page-hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Subheading / Tag */
+.page-hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+/* Main Heading */
+.page-hero-title {
+  font-size: 2.35rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.page-hero-title .brand-accent {
+  color: var(--primary-color);
+  position: relative;
+}
+
+/* Elegant Center Underline Accent */
+.page-hero-bar {
+  width: 46px;
+  height: 3px;
+  background: var(--primary-gradient);
+  border-radius: var(--radius-pill);
+  margin: 0 auto 10px auto;
+}
+
+/* Subtitle */
+.page-hero-subtitle {
+  font-size: 0.95rem;
+  color: #6C7280;
+  max-width: 600px;
+  margin: 0 auto 12px auto;
+  line-height: 1.55;
+}
+
+/* Breadcrumb */
+.page-breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFFFFF;
+  border: 1px solid #F1CCE0;
+  padding: 4px 16px;
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(158, 29, 103, 0.05);
+  list-style: none;
+  margin: 0 auto;
+}
+
+.page-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+  content: "›";
+  color: #B5B9C2;
+  font-weight: 700;
+  padding: 0 4px;
+}
+
+.page-breadcrumb a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.page-breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.page-breadcrumb .breadcrumb-item.active {
+  color: var(--text-dark);
+}
+
+/* Custom Section Headings (Underlined with Magenta) */
+.section-subheading-magenta {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 6px;
+  letter-spacing: 0.3px;
+}
+
+.section-title-bold {
+  font-size: 2.7rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.section-title-underline {
+  width: 58px;
+  height: 3.5px;
+  background: var(--primary-color);
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+/* Welcome to Trivedi Skin Clinic Section */
+.about-page-welcome-section {
+  background: #FFFFFF;
+  position: relative;
+}
+
+.about-welcome-img-wrap {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 16px 45px rgba(158, 29, 103, 0.1);
+  border: 4px solid #FFFFFF;
+  background: #FFF5F9;
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+.about-welcome-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.about-welcome-img-wrap:hover .about-welcome-img {
+  transform: scale(1.03);
+}
+
+.about-welcome-p {
+  font-size: 1.05rem;
+  color: #555B68;
+  line-height: 1.82;
+  margin-bottom: 20px;
+}
+
+.btn-book-visit {
+  display: inline-flex;
+  align-items: center;
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 1.12rem;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.btn-book-visit:hover {
+  color: #79114F;
+  transform: translateX(6px);
+}
+
+.btn-book-visit i {
+  transition: transform 0.3s ease;
+}
+
+.btn-book-visit:hover i {
+  transform: translateX(4px);
+}
+
+/* About Page Specialists Section */
+.about-page-specialists-section {
+  background: radial-gradient(circle at 85% 50%, #FCF1F7 0%, #FFFFFF 70%);
+  position: relative;
+  border-top: 1px solid #F6DCE9;
+}
+
+/* ==========================================================================
+   17. RESPONSIVE DESIGN (MEDIA QUERIES)
    ========================================================================== */
 @media (max-width: 1240px) {
   .hero-control-btn {
@@ -2640,12 +2955,33 @@ ul {
     border-radius: var(--radius-xl);
     flex-direction: column;
     text-align: center;
-    padding: 24px;
+    padding: 22px 18px;
     gap: 16px;
   }
 
-  .consult-phone-pill {
+  .consult-doctor-main {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .consult-doctor-name {
+    justify-content: center;
+  }
+
+  .consult-right-block {
     width: 100%;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .consult-actions-group {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .consult-phone-pill {
+    flex-grow: 1;
     justify-content: center;
   }
 

@@ -9,7 +9,7 @@
     content="Trivedi Skin Clinic by Dr. Sunil Trivedi. Advanced dermatology, laser treatments, anti-ageing, hair restoration, and cosmetic skincare in Surat.">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/webp" href="assets/image/trivedi_logo.webp">
+  <link rel="icon" type="image/webp" href="assets/image/favicon.png">
 
   <!-- Google Fonts: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -97,7 +97,7 @@
             <a class="nav-link active" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#about">About Us</a>
+            <a class="nav-link" href="aboutus.html">About Us</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#treatments">Treatments</a>
@@ -401,27 +401,57 @@
   <div class="consultation-card-wrapper">
     <div class="container">
       <div class="consultation-card">
-        <div class="d-flex align-items-center gap-3">
+        <!-- Doctor Info Left Block -->
+        <div class="consult-doctor-main d-flex align-items-center">
           <div class="consult-doctor-avatar-wrap">
             <img src="assets/image/Dr_sunil_trivedi.jpeg" alt="Dr. Sunil Trivedi" class="consult-doctor-thumb">
-            <span class="consult-online-badge" title="Doctor Available for Consultation"></span>
+            <span class="consult-online-badge" title="Dr. Sunil Trivedi is Available for Consultation"></span>
           </div>
           <div class="consult-content">
+            <!-- <div class="consult-eyebrow">
+              <span class="consult-badge-pill">
+                <span class="pulse-sparkle">✦</span> EXPERT CONSULTATION
+              </span>
+            </div> -->
             <h3 class="consult-title">Call for a Free Consultation</h3>
             <div class="consult-doctor-name">
-              By <span class="doc-highlight">Dr. Sunil Trivedi</span> <span class="doc-tag d-none d-sm-inline">• Senior
-                Skin Specialist</span>
+              By <span class="doc-highlight">Dr. Sunil Trivedi</span>
+              <span class="doc-divider d-none d-sm-inline">•</span>
+              <span class="doc-tag d-none d-sm-inline">Senior Skin Specialist</span>
+              <span class="doc-exp-badge d-none d-md-inline-flex"><i class="fa-solid fa-certificate me-1"></i>17+ Yrs Exp</span>
             </div>
           </div>
         </div>
-        <div class="d-flex align-items-center gap-3">
-          <div class="consult-timing d-none d-lg-flex flex-column text-end">
-            <span class="timing-title">Clinic Hours</span>
-            <span class="timing-hours">10:00 AM - 08:00 PM</span>
+
+        <!-- Right Side: Timings & CTA Buttons -->
+        <div class="consult-right-block d-flex align-items-center">
+          <!-- Clinic Hours Box -->
+          <div class="consult-timing-box d-none d-lg-flex align-items-center">
+            <div class="timing-icon-circle">
+              <i class="fa-regular fa-clock"></i>
+            </div>
+            <div class="timing-info text-start">
+              <span class="timing-label">CLINIC HOURS</span>
+              <span class="timing-hours">10:00 AM – 08:00 PM</span>
+            </div>
           </div>
-          <a href="tel:+919023824493" class="consult-phone-pill">
-            <i class="fa-solid fa-phone-volume"></i> +91 90238 24493
-          </a>
+
+          <div class="consult-timing-divider d-none d-lg-block"></div>
+
+          <!-- Actions: Call & WhatsApp -->
+          <div class="consult-actions-group d-flex align-items-center gap-2">
+            <a href="tel:+919023824493" class="consult-phone-pill" title="Call Trivedi Skin Clinic">
+              <span class="phone-icon-circle">
+                <i class="fa-solid fa-phone-volume"></i>
+              </span>
+              <span class="phone-text-wrap">
+                <span class="phone-main-number">+91 90238 24493</span>
+              </span>
+            </a>
+            <!-- <a href="https://api.whatsapp.com/send?phone=919023824493&amp;text=Hello%20Dr.%20Sunil%20Trivedi,%20I%20would%20like%20to%20consult%20regarding%20my%20skin" target="_blank" rel="noopener noreferrer" class="consult-wa-quick-btn" title="Chat on WhatsApp">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a> -->
+          </div>
         </div>
       </div>
     </div>
@@ -1216,8 +1246,8 @@
             <div class="col-6">
               <h5 class="footer-col-title">Quick Links</h5>
               <ul class="footer-links-list">
-                <li><a href="#">Home</a></li>
-                <li><a href="#about">About Us</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
                 <li><a href="#blogs">Blogs</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="#treatments">Services</a></li>
