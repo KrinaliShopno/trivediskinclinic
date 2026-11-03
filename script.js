@@ -498,5 +498,117 @@ document.addEventListener('DOMContentLoaded', () => {
     treatmentsTrack.addEventListener('mouseleave', startAutoTreatments);
     startAutoTreatments();
   }
+
+  // 8. Gallery Filter & Next/Prev Lightbox Viewer
+  const galleryFilterBtns = document.querySelectorAll('.gallery-filter-btn');
+  const galleryCards = document.querySelectorAll('.gallery-item-wrap');
+  const lightboxModal = document.getElementById('customLightbox');
+  const lightboxImgEl = document.getElementById('lightboxImg');
+  const lightboxPrevBtn = document.getElementById('lightboxPrev');
+  const lightboxNextBtn = document.getElementById('lightboxNext');
+  const lightboxCounter = document.getElementById('lightboxCounter');
+
+  let currentGalleryList = [];
+  let currentGalleryIndex = 0;
+
+  function getVisibleGalleryImages() {
+    const visibleCards = Array.from(document.querySelectorAll('.gallery-item-wrap')).filter(
+      (card) => card.style.display !== 'none'
+    );
+    return visibleCards.map((card) => card.querySelector('.gallery-photo-card img')).filter(Boolean);
+  }
+
+  function updateLightboxImage(index) {
+    if (!currentGalleryList.length) return;
+    currentGalleryIndex = (index + currentGalleryList.length) % currentGalleryList.length;
+    const targetImg = currentGalleryList[currentGalleryIndex];
+
+    lightboxImgEl.style.opacity = '0';
+    lightboxImgEl.style.transform = 'scale(0.95)';
+
+    setTimeout(() => {
+      lightboxImgEl.src = targetImg.src;
+      lightboxImgEl.alt = targetImg.alt || 'Clinic Gallery';
+      lightboxImgEl.style.opacity = '1';
+      lightboxImgEl.style.transform = 'scale(1)';
+
+      if (lightboxCounter) {
+        lightboxCounter.textContent = `${currentGalleryIndex + 1} / ${currentGalleryList.length}`;
+      }
+    }, 120);
+  }
+
+  if (galleryFilterBtns.length > 0 && galleryCards.length > 0) {
+    galleryFilterBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        galleryFilterBtns.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filterValue = btn.getAttribute('data-filter');
+
+        galleryCards.forEach((card) => {
+          if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  // Gallery Card Image Click -> Open Lightbox with Navigation
+  const galleryImgTriggers = document.querySelectorAll('.gallery-lightbox-trigger');
+
+  if (galleryImgTriggers.length > 0 && lightboxModal && lightboxImgEl) {
+    galleryImgTriggers.forEach((trigger) => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const clickedImg = trigger.tagName === 'IMG' ? trigger : trigger.querySelector('img');
+        if (!clickedImg) return;
+
+        currentGalleryList = getVisibleGalleryImages();
+        const foundIndex = currentGalleryList.findIndex((img) => img.src === clickedImg.src);
+        currentGalleryIndex = foundIndex !== -1 ? foundIndex : 0;
+
+        lightboxImgEl.src = clickedImg.src;
+        lightboxImgEl.alt = clickedImg.alt || 'Clinic Gallery';
+        if (lightboxCounter) {
+          lightboxCounter.textContent = `${currentGalleryIndex + 1} / ${currentGalleryList.length}`;
+        }
+
+        lightboxModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    if (lightboxNextBtn) {
+      lightboxNextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        updateLightboxImage(currentGalleryIndex + 1);
+      });
+    }
+
+    if (lightboxPrevBtn) {
+      lightboxPrevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        updateLightboxImage(currentGalleryIndex - 1);
+      });
+    }
+
+    // Keyboard Arrow Keys Navigation
+    window.addEventListener('keydown', (e) => {
+      if (!lightboxModal.classList.contains('active')) return;
+
+      if (e.key === 'ArrowRight') {
+        updateLightboxImage(currentGalleryIndex + 1);
+      } else if (e.key === 'ArrowLeft') {
+        updateLightboxImage(currentGalleryIndex - 1);
+      } else if (e.key === 'Escape') {
+        lightboxModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  }
 });
 

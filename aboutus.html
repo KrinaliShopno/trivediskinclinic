@@ -46,9 +46,7 @@
           </a>
         </div>
         <div class="d-flex align-items-center gap-3">
-          <a href="#appointment" data-bs-toggle="modal" data-bs-target="#appointmentModal" class="d-none d-md-inline">
-            <i class="fa-regular fa-calendar-check me-1"></i> Book Your Appointment
-          </a>
+
           <div class="top-bar-socials">
             <a href="https://www.facebook.com/trivediskinclinic" target="_blank" rel="noopener noreferrer"
               class="top-bar-social-btn" title="Facebook">
@@ -103,18 +101,18 @@
             <a class="nav-link" href="index.html#treatments">Treatments</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.html#gallery">Gallery</a>
+            <a class="nav-link" href="gallery.html">Gallery</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.html#blogs">Blogs</a>
+            <a class="nav-link" href="blogs.html">Blogs</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.html#contact">Contact Us</a>
+            <a class="nav-link" href="contact.html">Contact Us</a>
           </li>
         </ul>
 
         <div class="d-flex align-items-center">
-          <a href="#appointment" data-bs-toggle="modal" data-bs-target="#appointmentModal" class="nav-appointment-btn">
+          <a href="appointment.html" class="nav-appointment-btn">
             APPOINTMENT <i class="fa-solid fa-arrow-right-long ms-1"></i>
           </a>
         </div>
@@ -136,7 +134,8 @@
         </h1>
         <div class="page-hero-bar"></div>
         <p class="page-hero-subtitle">
-          Providing advanced dermatological care, US-FDA laser treatments, and clinical excellence in Surat for over 17+ years.
+          Providing advanced dermatological care, US-FDA laser treatments, and clinical excellence in Surat for over 20+
+          years.
         </p>
         <nav aria-label="breadcrumb">
           <ol class="page-breadcrumb">
@@ -208,7 +207,7 @@
               comfortable environment.
             </p>
             <div class="mt-4">
-              <a href="#appointment" data-bs-toggle="modal" data-bs-target="#appointmentModal" class="btn-book-visit">
+              <a href="appointment.html" class="btn-book-visit">
                 Booking a Visit <i class="fa-solid fa-arrow-right-long ms-2"></i>
               </a>
             </div>
@@ -273,11 +272,11 @@
 
           <!-- Buttons -->
           <div class="d-flex align-items-center flex-wrap gap-3">
-            <a href="#appointment" data-bs-toggle="modal" data-bs-target="#appointmentModal"
+            <a href="dr-sunil-trivedi.html"
               class="btn-specialist-outline">
-              View More <i class="fa-solid fa-arrow-right-long ms-1"></i>
+              View Profile <i class="fa-solid fa-arrow-right-long ms-1"></i>
             </a>
-            <a href="#appointment" data-bs-toggle="modal" data-bs-target="#appointmentModal"
+            <a href="appointment.html"
               class="btn-primary-custom py-2 px-4" style="font-size: 0.9rem;">
               Book Consultation <i class="fa-regular fa-calendar-check ms-1"></i>
             </a>
@@ -399,9 +398,9 @@
               <ul class="footer-links-list">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="aboutus.html">About Us</a></li>
-                <li><a href="index.html#blogs">Blogs</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-                <li><a href="index.html#treatments">Services</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="blogs.html">Blogs</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
               </ul>
             </div>
             <div class="col-6">
@@ -439,70 +438,7 @@
   <!-- ========================================================================
        8. APPOINTMENT BOOKING MODAL
        ======================================================================== -->
-  <div class="modal fade" id="appointmentModal" tabindex="-1" aria-labelledby="appointmentModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header modal-header-custom">
-          <h5 class="modal-title fw-bold" id="appointmentModalLabel">
-            <i class="fa-regular fa-calendar-check me-2"></i> Book Your Appointment
-          </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body p-4">
-          <p class="text-muted small mb-3">Fill out the form below and Dr. Trivedi's team will contact you promptly to
-            schedule your consultation.</p>
-          <form id="appointmentForm">
-            <div class="mb-3">
-              <label class="form-label fw-semibold small">Full Name *</label>
-              <input type="text" class="form-control" placeholder="Enter your full name" required>
-            </div>
-            <div class="row g-2 mb-3">
-              <div class="col-6">
-                <label class="form-label fw-semibold small">Phone Number *</label>
-                <input type="tel" class="form-control" placeholder="+91 98765 43210" required>
-              </div>
-              <div class="col-6">
-                <label class="form-label fw-semibold small">Email Address</label>
-                <input type="email" class="form-control" placeholder="name@email.com">
-              </div>
-            </div>
-            <div class="mb-3">
-              <label class="form-label fw-semibold small">Preferred Treatment</label>
-              <select class="form-select" required>
-                <option value="" selected disabled>Select Treatment</option>
-                <option value="Laser Treatment">Laser Treatment</option>
-                <option value="Anti Ageing Treatments">Anti Ageing Treatments</option>
-                <option value="Hair Treatments">Hair Treatments</option>
-                <option value="Dermato Surgical Procedures">Dermato Surgical Procedures</option>
-                <option value="General Consultation">General Consultation</option>
-              </select>
-            </div>
-            <div class="row g-2 mb-3">
-              <div class="col-6">
-                <label class="form-label fw-semibold small">Select Clinic Branch</label>
-                <select class="form-select" required>
-                  <option value="Vesu Branch (VIP Road)">Vesu Branch (VIP Road)</option>
-                  <option value="Parvat Patia Branch">Parvat Patia Branch</option>
-                </select>
-              </div>
-              <div class="col-6">
-                <label class="form-label fw-semibold small">Preferred Date</label>
-                <input type="date" class="form-control" required>
-              </div>
-            </div>
-            <div class="mb-3">
-              <label class="form-label fw-semibold small">Message or Specific Skin Concern</label>
-              <textarea class="form-control" rows="3" placeholder="Tell us about your concerns..."></textarea>
-            </div>
-            <button type="submit" class="btn-primary-custom w-100 py-2">
-              Confirm Appointment Request <i class="fa-solid fa-arrow-right-long ms-1"></i>
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+  
 
   <!-- WhatsApp Floating Action Button -->
   <a href="https://api.whatsapp.com/send?phone=919023824493&amp;text=Hello%20!!" class="whatsapp-float-btn"
