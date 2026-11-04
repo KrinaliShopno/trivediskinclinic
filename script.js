@@ -612,3 +612,36 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+
+
+
+// ==========================================================================
+// SITE PRELOADER HANDLER (Smooth & Reliable Fadeout)
+// ==========================================================================
+(function() {
+  const preloader = document.getElementById('sitePreloader');
+  if (preloader) {
+    let hasLoaded = false;
+    const hidePreloader = () => {
+      if (hasLoaded) return;
+      hasLoaded = true;
+      preloader.classList.add('loaded');
+      setTimeout(() => {
+        if (preloader.parentNode) {
+          preloader.style.display = 'none';
+        }
+      }, 650);
+    };
+
+    if (document.readyState === 'complete') {
+      setTimeout(hidePreloader, 400);
+    } else {
+      window.addEventListener('load', () => {
+        setTimeout(hidePreloader, 400);
+      });
+    }
+
+    // Safety fallback: maximum 2 seconds so page is never blocked
+    setTimeout(hidePreloader, 2000);
+  }
+})();
